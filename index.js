@@ -62,23 +62,52 @@ function handleCalendarClick(event) {
 }
 
 // Function to handle form submission
+// Function to handle form submission
+// Function to handle form submission
 function handleFormSubmit(event) {
     event.preventDefault(); // Prevent form from submitting in the default way
-
+    const title = document.getElementById('title').value;
     const time = document.getElementById('meetingTime').value;
     const description = document.getElementById('description').value;
-    const meetingInfo = `Time: ${time}<br> Description: ${description}`;
+    
+    const meetingContainer = document.createElement('div');
+    meetingContainer.classList.add('meeting-info');
+
+    // Create element for meeting title
+    const titleElement = document.createElement('div');
+    titleElement.classList.add('meeting-title');
+    titleElement.textContent = title;
+
+    // Create element for meeting time
+    const timeElement = document.createElement('div');
+    timeElement.classList.add('meeting-time');
+    timeElement.textContent = time;
+
+    // Create element for description
+    const descriptionElement = document.createElement('div');
+    descriptionElement.classList.add('description');
+    descriptionElement.textContent = description;
+
+    // Append title, time, and description elements to the meeting container
+    meetingContainer.appendChild(titleElement);
+    meetingContainer.appendChild(timeElement);
+    meetingContainer.appendChild(descriptionElement);
 
     // Get the selected date box
     const selectedDateBox = document.querySelector('.selected');
 
-    
     if (selectedDateBox) {
-        selectedDateBox.innerHTML += '<br>' + meetingInfo; // Append the meeting information to the content of the selected date box
+        selectedDateBox.appendChild(meetingContainer); // Append the meeting container to the content of the selected date box
+        toggleCalendarAndForm(); // Hide the form and show the calendar
     }
 
-    toggleCalendarAndForm(); // Hide the form and show the calendar
+    // Delay for 1000 milliseconds (1 second) before showing the description
+    setTimeout(function() {
+        descriptionElement.style.display = 'block';
+    }, 1500);
 }
+
+
 
 // Attach click event listener to the calendar container
 document.getElementById('calendar').addEventListener('click', handleCalendarClick);
