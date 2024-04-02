@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Scheduler</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Meeting Scheduler</h1>
+    <form id="meetingForm">
+      <label for="meetingDate">Select Date:</label>
+      <input type="date" id="meetingDate" required min="?php echo date('Y-m-d'); ?>"><br>
+      
+      <label for="meetingTime">Select Time:</label>
+      <input type="time" id="meetingTime" required><br>
+      
+      <button type="submit">Schedule Meeting</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
