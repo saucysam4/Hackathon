@@ -36,34 +36,31 @@ function generateCalendar(year, month) {
   const currentDate = new Date();
   generateCalendar(currentDate.getFullYear(), currentDate.getMonth() + 1);
 
-  // Define function to toggle visibility of calendar and meeting scheduler form
+  
 function toggleCalendarAndForm() {
     const calendarDiv = document.getElementById('calendar');
     const meetingFormDiv = document.getElementById('meetingFormContainer');
 
-    // Toggle visibility by toggling the 'hidden' class
+
     calendarDiv.classList.toggle('hidden');
     meetingFormDiv.classList.toggle('hidden');
 }
 
-// Function to handle click event on calendar dates
+
 function handleCalendarClick(event) {
     const target = event.target;
-    if (target.tagName === 'TD') { // Check if the clicked element is a table cell
-        // Remove 'selected' class from previously selected date box
+    if (target.tagName === 'TD') { 
         const selectedDateBox = document.querySelector('.selected');
         if (selectedDateBox) {
             selectedDateBox.classList.remove('selected');
         }
 
-        target.classList.add('selected'); // Add 'selected' class to the clicked date box
-        toggleCalendarAndForm(); // Toggle visibility of calendar and meeting scheduler form
+        target.classList.add('selected'); 
+        toggleCalendarAndForm(); 
     }
 }
 
-// Function to handle form submission
-// Function to handle form submission
-// Function to handle form submission
+
 function handleFormSubmit(event) {
     event.preventDefault(); // Prevent form from submitting in the default way
     const title = document.getElementById('title').value;
@@ -73,49 +70,61 @@ function handleFormSubmit(event) {
     const meetingContainer = document.createElement('div');
     meetingContainer.classList.add('meeting-info');
 
-    // Create element for meeting title
+   
     const titleElement = document.createElement('div');
     titleElement.classList.add('meeting-title');
     titleElement.textContent = title;
 
-    // Create element for meeting time
+  
     const timeElement = document.createElement('div');
     timeElement.classList.add('meeting-time');
     timeElement.textContent = time;
 
-    // Create element for description
     const descriptionElement = document.createElement('div');
     descriptionElement.classList.add('description');
     descriptionElement.textContent = description;
 
-    // Append title, time, and description elements to the meeting container
+    
     meetingContainer.appendChild(titleElement);
     meetingContainer.appendChild(timeElement);
     meetingContainer.appendChild(descriptionElement);
 
-    // Get the selected date box
+    meetingContainer.addEventListener('click', ()=> {
+        const expandedDescription =document.createElement('div');
+        const p= document.createElement('p')
+        p.innerText=description
+        const deleteButton=document.createElement('button')
+        deleteButton.addEventListener('click',()=>{
+            expandedDescription.remove()
+        })
+        deleteButton.innerText='x'
+        expandedDescription.append(p,deleteButton)
+        document.body.append(expandedDescription)
+        
+
+    })
+
+   
     const selectedDateBox = document.querySelector('.selected');
 
     if (selectedDateBox) {
-        selectedDateBox.appendChild(meetingContainer); // Append the meeting container to the content of the selected date box
-        toggleCalendarAndForm(); // Hide the form and show the calendar
+        selectedDateBox.appendChild(meetingContainer); 
+        toggleCalendarAndForm(); 
     }
 
-    // Delay for 1000 milliseconds (1 second) before showing the description
-    setTimeout(function() {
-        descriptionElement.style.display = 'block';
-    }, 1500);
+   
 }
+// Function to handle click event on meeting-info divs
 
 
+// Attach click event listener to the body for meeting-info divs
 
-// Attach click event listener to the calendar container
+
 document.getElementById('calendar').addEventListener('click', handleCalendarClick);
 
-// Attach submit event listener to the meeting scheduler form
 document.getElementById('meetingForm').addEventListener('submit', handleFormSubmit);
 
-// Hide the meeting scheduler form and show the calendar by default
+
 document.getElementById('meetingFormContainer').classList.add('hidden');
 document.getElementById('calendar').classList.remove('hidden');
 

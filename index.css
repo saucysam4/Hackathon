@@ -6,8 +6,8 @@ body {
   }
   
   .calendar-container {
-    width: 100vw; /* Take full width of the viewport */
-    height: 100vh; /* Take full height of the viewport */
+    width: 100vw; 
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,17 +112,13 @@ body {
     transition: transform 0.3s ease; /* Add transition for smooth scaling */
   }
   
-  .meeting-info:hover {
-    transform: scale(1.1); /* Enlarge the rectangle on hover */
-  }
+ 
   
   .meeting-info .description {
     display: none; /* Initially hide the description */
   }
   
-  .meeting-info:hover .description {
-    display: block; /* Show the description on hover */
-  }
+  
   
   
   
