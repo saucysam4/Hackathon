@@ -37,7 +37,7 @@ let eventsArr = [];
 // then call get
 getEvents();
 
-//functions to add days
+//Function to add days
 function initCalendar() {
     // to get prev month days and current month all days and rem next month days
     const firstDay = new Date(year, month, 1);
@@ -48,10 +48,10 @@ function initCalendar() {
     const day = firstDay.getDay();
     const nextDays = 7 - lastDay.getDay() - 1;
 
-    // update date top of calendar
+    // Update date top of calendar
     date.innerHTML = months[month] + " " + year;
 
-    // adding days on dom
+
     let days = "";
 
     // prev month days
@@ -110,7 +110,7 @@ function initCalendar() {
     }
 
     daysContainer.innerHTML = days;
-    // add listener after calendar initalized
+    
     addListener();
 }
 
@@ -141,7 +141,7 @@ prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth);
 
 // our calendar is ready
-// lets add goto date and goto today functionality
+// add goto date and goto today functionality
 todayBtn.addEventListener("click", () => {
     today = new Date();
     month = today.getMonth();
@@ -180,8 +180,8 @@ function gotoDate() {
             dateArr[0] < 13 &&
             dateArr[1].length === 4
         ) {
-            month = parseInt(dateArr[0]) - 1; // Decrement month by 1
-            year = parseInt(dateArr[1]); // Parse year as integer
+            month = parseInt(dateArr[0]) - 1;
+            year = parseInt(dateArr[1]);
             initCalendar();
             return;
         }
