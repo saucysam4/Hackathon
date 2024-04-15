@@ -39,7 +39,7 @@ getEvents();
 
 //Function to add days
 function initCalendar() {
-    // to get prev month days and current month all days and rem next month days
+    // to get prev month days and current month days and rem next month days
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
     const prevLastDay = new Date(year, month, 0);
@@ -448,7 +448,7 @@ eventsContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("event")) {
         const eventTitle =
             e.target.children[0].children[1].innerHTML;
-        // get the title of event than search in array by title and delete
+        // get the title of event then search in array by title and delete
         eventsArr.forEach((event) => {
             if (
                 event.day === activeDay &&
